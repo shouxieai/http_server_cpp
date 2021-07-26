@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+/objs
+/workspace/pro
+/workspace/logs
