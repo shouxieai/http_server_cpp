@@ -1,6 +1,12 @@
 # http_server_cpp
 - C++的http服务器，简单好用
 
+## 执行方式
+```bash
+cd http_server_cpp
+make run -j6
+```
+
 ## 案例代码
 ```C++
 #include "http_server.hpp"
