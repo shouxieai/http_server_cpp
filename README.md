@@ -49,3 +49,7 @@ int main(int argc, char** argv) {
 ## 效果
 ![](workspace/demo1.jpg)
 ![](workspace/demo2.jpg)
+
+## 关于我们
+- 我们的博客是：http://www.zifuture.com:8090/
+- 我们的B站地址是：https://space.bilibili.com/1413433465
