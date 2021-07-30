@@ -1044,21 +1044,3 @@ Json::Value failuref(const char* fmt, ...){
 	ret["time"] = iLogger::time_now();
 	return ret;
 }
-
-volatile bool g_has_exit_signal = false;
-static void signal_callback_handler(int signum){
-	if(signum == SIGINT){
-		INFO("Capture interrupt signal.");
-		g_has_exit_signal = true;
-	}
-}
-
-int while_loop(){
-
-	signal(SIGINT, signal_callback_handler);
-	while(!g_has_exit_signal){
-		iLogger::sleep(1000);
-	}
-	INFO("Loop over.");
-	return 0;
-}

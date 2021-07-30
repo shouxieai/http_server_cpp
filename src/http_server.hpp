@@ -135,6 +135,5 @@ Json::Value failure(const _T& value){
 }
 
 Json::Value failuref(const char* fmt, ...);
-int while_loop();
 
 #endif //HTTP_SERVER_HPP
