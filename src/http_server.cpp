@@ -798,6 +798,7 @@ void HttpServerImpl::on_work_complete(struct mg_connection *nc, int ev, void *ev
 			mg_mk_str(session->request.proto.c_str()),
 			iLogger::last_modify(file) + 28800,
 			file.c_str(), mg_mk_str(context_type.c_str()), mg_mk_str("Cache-Control: max-age=315360000"));
+		server->session_manager_.remove(res->conn_id);
 		return;
 	}
 
@@ -813,13 +814,13 @@ void HttpServerImpl::on_work_complete(struct mg_connection *nc, int ev, void *ev
 	mg_printf(c, "Content-Length: %ld\r\n\r\n", data.size());
 	if (!data.empty())
 		mg_send(c, data.data(), data.size());
+	server->session_manager_.remove(res->conn_id);
 }
  
 void HttpServerImpl::worker_thread_proc() {
 
-	shared_ptr<Session> session;
 	while (keeprun_) {
-
+		shared_ptr<Session> session;
 		{
 			unique_lock<mutex> l(lck_);
 			cv_.wait(l, [&]{return !jobs_.empty() || !keeprun_;});
