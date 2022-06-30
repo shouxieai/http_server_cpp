@@ -18,6 +18,7 @@
 #include <fstream>
 #include <stack>
 #include <signal.h>
+#include <functional>
 
 #if defined(U_OS_WINDOWS)
 #	define HAS_UUID
